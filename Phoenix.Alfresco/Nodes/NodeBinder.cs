@@ -43,37 +43,3 @@ public static class NodeBinder
         }
     }
 }
-
-
-public class NodeVersion
-{
-    public string Id { get; }
-    public string VersionLabel { get; }
-    public string ModifiedAt { get; }
-    public string? Modifier { get; }
-
-    public NodeVersion(string id, string versionLabel, string modifiedAt, string? modifier = null)
-    {
-        Id = id;
-        VersionLabel = versionLabel;
-        ModifiedAt = modifiedAt;
-        Modifier = modifier;
-    }
-}
-
-public static class VersionBinder
-{
-    public static NodeVersion FromJson(JsonElement version)
-    {
-        var user = version.TryGetProperty("modifiedByUser", out var userProp)
-            ? userProp.GetProperty("displayName").GetString()
-            : null;
-
-        return new NodeVersion(
-            id: version.GetProperty("id").GetString()!,
-            versionLabel: version.GetProperty("versionLabel").GetString() ?? "v?",
-            modifiedAt: version.GetProperty("modifiedAt").GetString()!,
-            modifier: user
-        );
-    }
-}

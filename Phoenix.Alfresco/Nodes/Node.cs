@@ -11,20 +11,6 @@ public record Node(
     string? ParentId = null
 );
 
-public record HierarchyItem(
-    string Id,
-    string Name,
-    string? MimeType,
-    string? ParentId,
-    bool IsFolder
-)
-{
-    public List<HierarchyItem> Children { get; init; } = new();
-
-    public bool HasMimeType => !string.IsNullOrWhiteSpace(MimeType);
-    public bool HasParentId => !string.IsNullOrWhiteSpace(ParentId);
-}
-
 /*
 
 Subject: Phoenix.CMIS v1 – Alfresco Integration Milestone Achieved 🚀

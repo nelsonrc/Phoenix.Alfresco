@@ -14,8 +14,8 @@ public class MemoryCacheProvider : ICacheProvider
 
     public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> factory, CancellationToken ct = default)
     {
-        if (_cache.TryGetValue(key, out T cached))
-            return cached;
+        if (_cache.TryGetValue(key, out T? cached))
+            return cached!;
 
         var value = await factory();
         _cache.Set(key, value, DefaultTtl);
