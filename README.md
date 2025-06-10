@@ -30,7 +30,3 @@ await foreach (var node in client.StreamDescendantsAsync(
 {
     Console.WriteLine($"📄 {node.Name}");
 }
-
-
-Let me know if you’d like to adjust the package namespace from `Phoenix.CMIS` to `Phoenix.Alfresco` as well—I can help update any file headers or code references accordingly. You’re nearly ready to publish with style. 🔥📦  
-@endoftext**
